@@ -1,0 +1,191 @@
+body {
+    font-family: 'poppins', sans-serif;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: aqua;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #ffdde1);
+    background-size: 300% 300%;
+    color: black;
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    overflow: hidden;
+    animation: bgAnimation 10s infinite alternate ease-in-out;
+}
+/* Animated Background */
+@keyframes bgAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* quiz Container */
+quiz-game-container {
+ max-width: 600px;
+ width: 100%;
+ margin: auto;  
+ background: #fff;
+ padding: 25px;
+ border-radius: 16px;
+ box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+ text-align: center;
+ opacity: 0;
+ transform: translateY(-20px);
+ animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Flash animation when time's up */
+@keyframes timeUpFlash {
+    0% { background-color: red; }
+    50% { background-color: white; }
+    100% { background-color: red; }
+}
+
+quiz-screen.time-up {
+    animation: timeUpFlash 1s ease-out;
+}
+
+/* Headings */
+h1, h2 {
+    color: #333;
+    font-weight: bold;
+}
+
+/* Buttons */
+button {
+    padding: 12px 20px;
+    margin: 10px;
+    background: #ff7eb3;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(255, 126, 179, 0.4);
+
+}
+
+/* Button flash effect when correct or incorrect */
+.option-btn.correct {
+    background-color: #28a745; /* Green */
+    animation: flashGreen 0.5s ease-out;
+}
+
+.option-btn.incorrect {
+    background-color: #dc3545; /* Red */
+    animation: flashRed 0.5s ease-out;
+}
+
+/* Keyframes for flashing green (correct) */
+@keyframes flashGreen {
+    0% { background-color: #28a745; }
+    50% { background-color: #fff; }
+    100% { background-color: #28a745; }
+}
+
+/* Keyframes for flashing red (incorrect) */
+@keyframes flashRed {
+    0% { background-color: #dc3545; }
+    50% { background-color: #fff; }
+    100% { background-color: #dc3545; }
+}
+
+/* Button Effects */
+button:hover {
+    background: #ff4f81;
+    transform: scale(1.1);
+    box-shadow:  0 6px 14px rgba(255, 79, 129, 0.5);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Options Styling */
+#options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#options button {
+    width: 100%;
+    max-width: 300px;
+}
+
+#timer {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ff6347; 
+}
+
+.option-btn {
+    transition: transform 0.2s ease;
+}
+
+.option-btn:hover {
+    transform: scale(1.1);
+}
+
+
+/* Question Animation */
+quiz-screen {
+    transform: rotateY(-90deg);
+    opacity: 0;
+    animation: flipIn 0.8s ease-in-out 0.3s forwards;
+}
+
+@keyframes flipIn {
+    0% {
+        transform: rotateY(-90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateY(0);
+        opacity: 1;
+    }
+}
+
+/* End Screen Confetti Effect */
+confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .quiz-game-container {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
